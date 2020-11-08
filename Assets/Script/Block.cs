@@ -48,6 +48,7 @@ public class Block : MonoBehaviour {
                     {
                         stage[x, y, z] = 2;
 
+
                     }
                     //それ以外は０
                     else

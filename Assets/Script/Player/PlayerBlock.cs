@@ -12,8 +12,8 @@ public class PlayerBlock : MonoBehaviour {
     {
         var BlockNumbers = Random.Range(0, 7);
         //改善予定
-        var player = Instantiate(playerBlock[BlockNumbers], new Vector3(Block.PlayerPos, 19f, Block.PlayerPos), Quaternion.identity);
-        player.transform.SetParent(blockPlace, false);
-        return (player);
+        var block = Instantiate(playerBlock[BlockNumbers], new Vector3(StageManeger.Instance.PlayerPos, 19f, StageManeger.Instance.PlayerPos), Quaternion.identity);
+        block.transform.SetParent(blockPlace, false);
+        return (block);
     }
 }

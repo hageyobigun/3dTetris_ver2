@@ -6,9 +6,9 @@ using UnityEngine;
 public class PlayerRotation {
 
     //回転
-    public static bool IsRotation()
+    public bool IsRotation(GameObject block)
     {
-        foreach (Transform child in Player.players.transform)
+        foreach (Transform child in block.transform)
         {
             int PosX = Convert.ToInt32(child.transform.position.x);
             int PosY = Convert.ToInt32(child.transform.position.y);
@@ -23,10 +23,17 @@ public class PlayerRotation {
     }
 
 
-    public void Rotation(Vector3 v, GameObject player)
+    public void Rotation(GameObject block, Vector3 Angle)
     {
-        player.transform.Rotate(Vector3.up, v.y, Space.World);
-        player.transform.Rotate(Vector3.right, v.x, Space.World);
-        player.transform.Rotate(Vector3.forward, v.z, Space.World);
+        block.transform.Rotate(Vector3.up, Angle.y, Space.World);
+        block.transform.Rotate(Vector3.right, Angle.x, Space.World);
+        block.transform.Rotate(Vector3.forward, Angle.z, Space.World);
+        //戻す
+        if (IsRotation(block) == false)
+        {
+            block.transform.Rotate(Vector3.up, Angle.y * -1, Space.World);
+            block.transform.Rotate(Vector3.right, Angle.x * -1, Space.World);
+            block.transform.Rotate(Vector3.forward, Angle.z * -1, Space.World);
+        }
     }
 }
