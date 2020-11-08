@@ -5,57 +5,41 @@ using UniRx;
 
 public class StageManeger : SingletonMonoBehaviour<StageManeger>
 {
-
-    public GameObject stageBlock;
     public int[,,] stage = new int[36, 36, 36];
+    public GameObject[,,] destoryBlocks = new GameObject[100, 100, 100];
+    public int[] blockCount;
+
     public int StageSize;
     public int PlayerPos;
 
-    [SerializeField] private Transform stagePlace;
-    public GameObject[,,] DestoryBlocks = new GameObject[100, 100, 100];
+    private StageUpdate stageUpdate;
+    private StageDestroy stageDestroy;
+    private StageCount stageCount;
+    private StageInstance stageInstance;
 
-    // Use this for initialization
-    void Start()
+    public Subject<GameObject> updateStageSubject = new Subject<GameObject>();
+
+    private void Start()
+    {
+        Initialize();
+
+        updateStageSubject.Subscribe(block =>
+        {
+            stageUpdate.BlockSave(block);
+            stageCount.BlockCount();
+            stageDestroy.BlockDestory(StageSize);
+        });
+
+    }
+    private void Initialize()
     {
         StageSize = StageSize + 1;
         PlayerPos = StageSize + StageSize / 2;
-        StageInstance();
+
+        stageUpdate = new StageUpdate();
+        stageCount = new StageCount();
+        stageDestroy = GetComponent<StageDestroy>();
+        stageInstance = GetComponent<StageInstance>();
+        stageInstance.Stage(StageSize);
     }
-
-    //ステージ生成
-    void StageInstance()
-    {
-
-        for (int x = StageSize; x < StageSize * 2 + 1; x++)
-        {
-            for (int y = 0; y < 25; y++)
-            {
-                for (int z = StageSize; z < StageSize * 2 + 1; z++)
-                {
-                    //壁は1
-                    if (x == StageSize || x == 2 * StageSize || z == StageSize || z == 2 * StageSize)
-                    {
-                        stage[x, y, z] = 1;
-                        GameObject stages = Instantiate(stageBlock, new Vector3(x, y, z), Quaternion.identity);
-                        stages.transform.SetParent(stagePlace, false);
-
-                    }
-                    //置いてくブロックは
-                    else if (y == 0)
-                    {
-                        stage[x, y, z] = 2;
-                        GameObject stages = Instantiate(stageBlock, new Vector3(x, y, z), Quaternion.identity);
-                        stages.transform.SetParent(stagePlace, false);
-                    }
-                    //それ以外は０
-                    else
-                    {
-                        stage[x, y, z] = 0;
-                    }
-                }
-            }
-        }
-
-    }
-
 }

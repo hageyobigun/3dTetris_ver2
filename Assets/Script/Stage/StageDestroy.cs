@@ -3,62 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class StageDestroy : MonoBehaviour {
+public class StageDestroy : MonoBehaviour{
 
-    public static GameObject[,,] DestoryBlocks;
-    public int destoryRange;
-    public bool canDestory = false;
-
-
-    //削除するかどうか
-    public  void destroyCheck()
-    {
-
-        int[] destroyLine = new int[15];
-        int count = 0;
-        for (int y = 1; y < 15; y++)
-        {
-            for (int x = destoryRange + 1; x < destoryRange * 2; x++)
-            {
-                for (int z = destoryRange + 1; z < destoryRange * 2; z++)
-                {
-                    if (Block.stage[x, y, z] == 2)
-                    {
-                        count++;
-                    }
-                }
-            }
-            if (count == (destoryRange - 1) * (destoryRange - 1))
-            {
-                destroyLine[y] = 1;
-                canDestory = true;
-            }
-            count = 0;
-        }
-        if (canDestory == true)
-        {
-            BlockDestory(destroyLine);
-            canDestory = false;
-        }
-    }
+    private int destorySize;
 
     //削除
-    public  void BlockDestory(int[] Line)
+    public  void BlockDestory(int stageSize)
     {
+        destorySize = stageSize;
         for (int y = 14; y > 0; y--)
         {
-            if (Line[y] == 1)
+            if (StageManeger.Instance.blockCount[y] == (destorySize - 1) * (destorySize - 1))
             {
-                for (int x = destoryRange + 1; x < 2 * destoryRange; x++)
+                for (int x = destorySize + 1; x < destorySize * 2; x++)
                 {
-                    for (int z = destoryRange + 1; z < 2 * destoryRange; z++)
+                    for (int z = destorySize + 1; z < destorySize * 2; z++)
                     {
-                        Destroy(DestoryBlocks[x, y, z].gameObject);
+                        Destroy(StageManeger.Instance.destoryBlocks[x, y, z].gameObject);
+                        StageManeger.Instance.blockCount[y] = 0;
                     }
                 }
+                DownLine(y);
             }
         }
 
+    }
+
+    //削除後
+    public void DownLine(int line)
+    {
+        for (int y = line; y < 15; y++)
+        {
+            for (int x = destorySize + 1; x < destorySize * 2; x++)
+            {
+                for (int z = destorySize + 1; z < destorySize * 2; z++)
+                {
+                    if (StageManeger.Instance.destoryBlocks[x, y + 1, z] != null)
+                    {
+                        //一段下げる
+                        StageManeger.Instance.destoryBlocks[x, y + 1, z].transform.position += new Vector3(0, -1, 0);
+                        StageManeger.Instance.destoryBlocks[x, y, z] = StageManeger.Instance.destoryBlocks[x, y + 1, z];
+                        StageManeger.Instance.destoryBlocks[x, y + 1, z] = null;
+                    }
+                    StageManeger.Instance.stage[x, y, z] = StageManeger.Instance.stage[x, y + 1, z];
+                }
+            }
+
+        }
     }
 
 }

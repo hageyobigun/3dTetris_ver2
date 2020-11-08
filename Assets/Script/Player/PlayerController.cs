@@ -28,10 +28,7 @@ public class PlayerController : MonoBehaviour {
 		//生成
 		this.UpdateAsObservable()
             .Where(_ => playerPut.IsPut(block))
-            .Subscribe(_ =>
-			{
-				block = playerBlock.BlockInstance();
-			});
+            .Subscribe(_ => block = playerBlock.BlockInstance());
 
         //移動
         this.UpdateAsObservable()
@@ -44,10 +41,10 @@ public class PlayerController : MonoBehaviour {
 			.Subscribe(_ => playerRotation.Rotation(block, playerInput.angle));
 
 		this.UpdateAsObservable()
-			.Subscribe(_ =>
-			{
-				block.transform.position -= new Vector3(0, fallSpeed, 0);
-			});
+			.Subscribe(_ => block.transform.position -= new Vector3(0, fallSpeed, 0));
 
+		this.UpdateAsObservable()
+			.Where(_ => playerInput.IsUpFallSpeed())
+			.Subscribe(_ => block.transform.position -= new Vector3(0, fallSpeed * 2, 0));
 	}
 }

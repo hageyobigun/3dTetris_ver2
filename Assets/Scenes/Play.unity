@@ -188,6 +188,8 @@ GameObject:
   m_Component:
   - component: {fileID: 492717547}
   - component: {fileID: 492717546}
+  - component: {fileID: 492717549}
+  - component: {fileID: 492717548}
   m_Layer: 0
   m_Name: StageManeger
   m_TagString: Untagged
@@ -206,10 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823f23082fae742b7b23c66000f9941d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageBlock: {fileID: 1892055426580624, guid: fc54688a4997a40baa7bbfddf70f799f, type: 2}
+  blockCount: 
   StageSize: 8
   PlayerPos: 0
-  stagePlace: {fileID: 904113865}
 --- !u!4 &492717547
 Transform:
   m_ObjectHideFlags: 0
@@ -223,6 +224,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &492717548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492717545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d8d3969ad8e4c1cbc079965a684c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &492717549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492717545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4bd5a9d03c648fd88fb18057a67719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stagePlace: {fileID: 904113865}
+  stageBlock: {fileID: 1892055426580624, guid: fc54688a4997a40baa7bbfddf70f799f, type: 2}
 --- !u!1 &667845147
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,13 +318,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 667845147}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 13.4, y: 23.3, z: 13.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &772840639
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,13 +354,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBlock:
-  - {fileID: 1251604437671316, guid: 050d1568f79d244a0b4167b821e945c8, type: 2}
-  - {fileID: 1626795871325770, guid: ca0867f4433f8446cbce00a42969a4d4, type: 2}
   - {fileID: 1568314779643090, guid: 07d670cfc309d4a69a3233dc880cc3f9, type: 2}
-  - {fileID: 1525377536125190, guid: 849b7852e29a84e27b177c5e1f11b41c, type: 2}
-  - {fileID: 1018926823457208, guid: 76f3f187d48de43ec9867122201ac5c0, type: 2}
-  - {fileID: 1474293510118852, guid: 65adb7efccf3a40be99bc52f9cd64c78, type: 2}
-  - {fileID: 1766526002550112, guid: 471fb7d41b30640c49ee23e1a6e4f235, type: 2}
+  - {fileID: 1568314779643090, guid: 07d670cfc309d4a69a3233dc880cc3f9, type: 2}
+  - {fileID: 1568314779643090, guid: 07d670cfc309d4a69a3233dc880cc3f9, type: 2}
+  - {fileID: 1568314779643090, guid: 07d670cfc309d4a69a3233dc880cc3f9, type: 2}
+  - {fileID: 1568314779643090, guid: 07d670cfc309d4a69a3233dc880cc3f9, type: 2}
+  - {fileID: 1568314779643090, guid: 07d670cfc309d4a69a3233dc880cc3f9, type: 2}
+  - {fileID: 1568314779643090, guid: 07d670cfc309d4a69a3233dc880cc3f9, type: 2}
   blockPlace: {fileID: 1781195849}
 --- !u!114 &772840641
 MonoBehaviour:

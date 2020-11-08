@@ -17,6 +17,7 @@ public class PlayerPut {
             {
                 var pos = block.transform.position;
                 block.transform.position = new Vector3(pos.x, Convert.ToInt32(pos.y), pos.z);
+                StageManeger.Instance.updateStageSubject.OnNext(block);
                 return true;
             }
         }

@@ -49,5 +49,5 @@ public class PlayerInput {
         return angle;
     }
 
-
+    public bool IsUpFallSpeed() => Input.GetKey(KeyCode.D);
 }
