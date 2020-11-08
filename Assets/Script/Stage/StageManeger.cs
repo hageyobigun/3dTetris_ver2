@@ -5,8 +5,8 @@ using UniRx;
 
 public class StageManeger : SingletonMonoBehaviour<StageManeger>
 {
-    public int[,,] stage = new int[36, 36, 36];
-    public GameObject[,,] destoryBlocks = new GameObject[100, 100, 100];
+    public int[,,] stage;
+    public GameObject[,,] destoryBlocks;
     public int[] blockCount;
 
     public int StageSize;
@@ -18,6 +18,8 @@ public class StageManeger : SingletonMonoBehaviour<StageManeger>
     private StageInstance stageInstance;
 
     public Subject<GameObject> updateStageSubject = new Subject<GameObject>();
+
+    [SerializeField] private GameObject mainCamera;
 
     private void Start()
     {
@@ -35,6 +37,9 @@ public class StageManeger : SingletonMonoBehaviour<StageManeger>
     {
         StageSize = StageSize + 1;
         PlayerPos = StageSize + StageSize / 2;
+        mainCamera.transform.position = new Vector3(PlayerPos, 25f, PlayerPos);
+        destoryBlocks = new GameObject[100, 100, 100];
+        stage = new int[36, 36, 36];
 
         stageUpdate = new StageUpdate();
         stageCount = new StageCount();

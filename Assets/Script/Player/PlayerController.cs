@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 		playerPut = new PlayerPut();
 		playerBlock = GetComponent<PlayerBlock>();
 
+
 		block = playerBlock.BlockInstance();
 
 		//生成
