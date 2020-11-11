@@ -48,6 +48,6 @@ public class PlayerController : MonoBehaviour {
 		//落下加速
 		this.UpdateAsObservable()
 			.Where(_ => playerInput.IsUpFallSpeed())
-			.Subscribe(_ => block.transform.position -= new Vector3(0, fallSpeed * 2, 0));
+			.Subscribe(_ => block.transform.position -= new Vector3(0, fallSpeed * 3, 0));
 	}
 }
