@@ -41,9 +41,11 @@ public class PlayerController : MonoBehaviour {
 			.Where(_ => playerInput.RotationBlock() != new Vector3(0, 0, 0))
 			.Subscribe(_ => playerRotation.Rotation(block, playerInput.angle));
 
+		//落下
 		this.UpdateAsObservable()
 			.Subscribe(_ => block.transform.position -= new Vector3(0, fallSpeed, 0));
 
+		//落下加速
 		this.UpdateAsObservable()
 			.Where(_ => playerInput.IsUpFallSpeed())
 			.Subscribe(_ => block.transform.position -= new Vector3(0, fallSpeed * 2, 0));

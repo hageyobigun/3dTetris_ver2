@@ -28,8 +28,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBe
 
     virtual protected void Awake()
     {
-        // 他のゲームオブジェクトにアタッチされているか調べる
-        // アタッチされている場合は破棄する。
+        DontDestroyOnLoad(gameObject);
         CheckInstance();
     }
 
@@ -44,7 +43,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBe
         {
             return true;
         }
-        Destroy(this);
+        Destroy(this.gameObject);
         return false;
     }
 }

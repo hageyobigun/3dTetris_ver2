@@ -8,7 +8,7 @@ public class StageDestroy : MonoBehaviour{
     private int destorySize;
 
     //削除
-    public  void BlockDestory(int stageSize)
+    public void BlockDestory(int stageSize)
     {
         destorySize = stageSize;
         for (int y = 14; y > 0; y--)
@@ -24,12 +24,13 @@ public class StageDestroy : MonoBehaviour{
                     }
                 }
                 DownLine(y);
+                StageManeger.Instance.scoreValue += 100;//スコア100
             }
         }
 
     }
 
-    //削除後
+    //削除後下に下げる
     public void DownLine(int line)
     {
         for (int y = line; y < 15; y++)

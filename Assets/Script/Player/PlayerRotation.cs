@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerRotation {
 
-    //回転
+    //回転して壁に当たったりしないか
     public bool IsRotation(GameObject block)
     {
         foreach (Transform child in block.transform)
@@ -22,7 +22,7 @@ public class PlayerRotation {
         return true;
     }
 
-
+    //回転
     public void Rotation(GameObject block, Vector3 Angle)
     {
         block.transform.Rotate(Vector3.up, Angle.y, Space.World);

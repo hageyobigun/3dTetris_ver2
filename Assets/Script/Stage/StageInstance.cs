@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageInstance : MonoBehaviour {
 
-    [SerializeField] private Transform stagePlace;
+    //[SerializeField] private Transform stagePlace;
     [SerializeField] private GameObject stageBlock;
 
     //ステージ生成
@@ -20,16 +20,16 @@ public class StageInstance : MonoBehaviour {
                     if (x == StageSize || x == 2 * StageSize || z == StageSize || z == 2 * StageSize)
                     {
                         StageManeger.Instance.stage[x, y, z] = 1;
-                        GameObject stages = Instantiate(stageBlock, new Vector3(x, y, z), Quaternion.identity);
-                        stages.transform.SetParent(stagePlace, false);
+                        Instantiate(stageBlock, new Vector3(x, y, z), Quaternion.identity);
+                        //stages.transform.SetParent(stagePlace, false);
 
                     }
                     //置いてくブロックは
                     else if (y == 0)
                     {
                         StageManeger.Instance.stage[x, y, z] = 2;
-                        GameObject stages = Instantiate(stageBlock, new Vector3(x, y, z), Quaternion.identity);
-                        stages.transform.SetParent(stagePlace, false);
+                        Instantiate(stageBlock, new Vector3(x, y, z), Quaternion.identity);
+                        //stages.transform.SetParent(stagePlace, false);
                     }
                     //それ以外は０
                     else

@@ -9,6 +9,7 @@ public class PlayerInput {
     public Vector3 moveDirection;
     public Vector3 angle;
 
+    //移動
     public Vector3 MoveBlock()
     {
         moveDirection = new Vector3(0, 0, 0);
@@ -34,20 +35,20 @@ public class PlayerInput {
     public Vector3 RotationBlock()
     {
         angle = new Vector3(0, 0, 0);
-        if (Input.GetKeyDown(KeyCode.W))//x
+        if (Input.GetKeyDown(KeyCode.W))//x回転
         {
             angle = new Vector3(90, 0, 0);
         }
-        if (Input.GetKeyDown(KeyCode.S))//y
+        if (Input.GetKeyDown(KeyCode.S))//y回転
         {
             angle = new Vector3(0, 90, 0);
         }
-        if (Input.GetKeyDown(KeyCode.A))//z
+        if (Input.GetKeyDown(KeyCode.A))//z回転
         {
             angle = new Vector3(0, 0, 90);
         }
         return angle;
     }
-
+    //落下加速ボタン
     public bool IsUpFallSpeed() => Input.GetKey(KeyCode.D);
 }

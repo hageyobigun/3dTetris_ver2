@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StageCount{
 
+    //置いてあるブロックの数
     public void BlockCount()
     {
         var size = StageManeger.Instance.StageSize;
