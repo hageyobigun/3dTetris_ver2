@@ -648,7 +648,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: c8694f3b-8369-4f18-a6ab-1abbd394d693
   projectName: Pazzle
   organizationId: tetuyadamasii
