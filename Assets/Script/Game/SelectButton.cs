@@ -21,4 +21,9 @@ public class SelectButton : MonoBehaviour {
         GameManeger.Instance.stagesize =10;
         GameManeger.Instance.SetCurrentState(GameManeger.GameState.Playing);
     }
+
+    public void Game_end_button()
+    {
+        Application.Quit();
+    }
 }
